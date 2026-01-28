@@ -1,81 +1,83 @@
-# Clion and SDL2 Setup
+# 🗺️ Four Color Theorem — SDL C Project
 
-It's been so hard to find a decent guide about how to set up Clion and SDL2, so I made one for my future self and for
-some random person on internet who find this. I hope it helps you.
+An interactive visualization and game based on the **Four Color Theorem**, implemented in **C** using **SDL2**.
 
-We are going to use the **bundled MinGw 64 bits version that comes with Clion**, if you use 32 bits version you should
-replace the CMakeLists.txt file with the proper directories paths.
+The project demonstrates how any planar map can be colored using **no more than four colors**, such that no two adjacent regions share the same color.
 
-**Note:** This project was tested on Windows 64 bits.
+---
 
-## Fast setup
+## 🎮 Gameplay Overview
 
-All the files needed to make it work are already uploaded. You just need to open with it Clion and start coding.
+- The map is generated using a **Voronoi diagram**
+- Each region must be colored manually by the player
+- Only **4 colors** are available
+- Adjacent regions **cannot share the same color**
+- The game tracks completion time and stores results in a **Hall of Fame**
 
-* Download or clone the repository
+---
 
-```
-git clone https://github.com/llanillo/clion-cmake-sdl2-template
-```
+## 🧠 Theoretical Background
 
-* Open it with Clion and click **Ok** to the Project Wizard.
-* **(Optional)** Rename the project. To do it you must change _PROJECT_NAME_ **ONLY in line 2** of CMaLists.txt.
-* Compile and run it. Everything went well if you see a purple window with exit code '0'.
+The **Four Color Theorem** states:
 
-## Manual setup
+> Any planar map can be colored with at most four colors so that no two neighboring regions share the same color.
 
-* Download the latest [SDL Development Libraries (MinGW version)](https://www.libsdl.org/download-2.0.php)
+In this project:
+- Regions are represented as points
+- A Voronoi diagram defines borders
+- Adjacency is detected by sampling neighboring cells
+- Color conflicts are checked dynamically
 
-* Download the [SDL2 Cmake Scripts](https://github.com/tcbrindle/sdl2-cmake-scripts)
+---
 
-* Create a cmake/modules directory in your project root and unzip all cmake scripts there.
+## 🛠️ Technical Details
 
-* Unzip the SDL Development libraries in your project root, rename the folder to 'SDL2'
+- **Language:** C (C99)
+- **Graphics:** SDL2
+- **Algorithm:** Voronoi-based region partitioning
+- **Adjacency Detection:** Grid sampling
+- **Max Regions:** 100
+- **Colors:** 4 (Red, Green, Blue, Yellow)
 
-* Mark the SDL2 folder as excluded in Clion (Optional)
+---
 
-* Download the CMakeLists.txt from this repository and copy it to your project.
+## 🎚️ Difficulty Levels
 
-* **(Optional) Rename the project editing line 2 (PROJECT_NAME)** in line 2.
+| Difficulty | Regions |
+|-----------|---------|
+| Easy      | 5       |
+| Medium    | 70      |
+| Hard      | 100     |
 
-* Copy the SDL2.dll from the SDL2 folder into your cmake-build-debug folder:
-    - For 64 bits version it's located at x86_64-w65-mingw32/bin/SDL2.dll
-    - For 32 bits version it's located at i686-w64-mingw32/bin/SDL2.dll
+---
 
-* Modify the main.cpp signature to look like:
+## 🕹️ Controls
 
-```
-int main (int argc, char* args[])
-```
+### Menu
+- `1` — Easy
+- `2` — Medium
+- `3` — Hard
 
-If your exit code is 0 and Clion detects your SDL2 headers then you are good to go.
+### Game
+- `1–4` — Select color
+- `Left Mouse Button` — Paint region
+- `R` — Restart current difficulty
+- `ESC` — Exit
 
-## Important READ
+---
 
-* The paths should be exactly as told otherwise change the folder's paths inside the CMakeLists.txt.
-* MingGw should be the default toolchains for Clion.
-* Add SDL2 and cmake folders to the gitignore.
+## 🏆 Hall of Fame
 
-## Project tree example
+After winning:
+- Enter your name
+- Completion time is saved to `hall_of_fame.txt`
+- Previous records are displayed on exit
 
-<p align="center">
-  <img src="resources/Example2.png"  alt="example"/>
-</p>
+---
 
-## Setup SDL2 Image
+## ▶️ How to Build & Run
 
-1. Download the [SDL Image Development Release](https://github.com/libsdl-org/SDL_image/releases)
-
-2. Inside your SDL2 Image folder (downloaded from step 1), select the version you are using for SDL2 and copy it to your
-   SDL2 folder in your project (It won't override anything)
-
-3. Put the SDL2_image.dll from the SDL2 Image folder into your cmake-build-debug folder.
-
-4. Add to the CMakeList:
-
-``` 
-set(SDL2_IMAGE_PATH "SDL2/x86_64-w64-mingw32")
-find_package(SDL2_image REQUIRED) 
-```
-
-**Modify the SDL2_IMAGE_PATH if you are using the 32 bit version**
+### Linux / macOS
+```bash
+gcc main.c -o four_color -lSDL2
+./four_color

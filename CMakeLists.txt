@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.22)
-project(PROJECT_NAME)
+project(Four_Color_Theorem)
 
 set(CMAKE_CXX_STANDARD 14)
 
 # Must set the path to the main.cpp, for example: scripts/main.cpp if it is inside a folder
-add_executable(${PROJECT_NAME} scripts/main.cpp)
+add_executable(${PROJECT_NAME}  scripts/main.c)
 
 # --- SDL2 SETUP ---
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
