@@ -81,3 +81,10 @@ After winning:
 ```bash
 gcc main.c -o four_color -lSDL2
 ./four_color
+
+## 🙏 Acknowledgements
+
+The project uses an existing CLion + SDL2 boilerplate for build system and IDE configuration.
+
+All application logic, algorithms, rendering, and gameplay code were implemented entirely by the author.
+
