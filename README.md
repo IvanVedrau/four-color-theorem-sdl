@@ -1,3 +1,8 @@
+## 📸 Screenshots
+
+![Gameplay screenshot](images/gameplay.png)
+
+
 # 🗺️ Four Color Theorem — SDL C Project
 
 An interactive visualization and game based on the **Four Color Theorem**, implemented in **C** using **SDL2**.
