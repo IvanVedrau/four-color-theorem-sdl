@@ -82,6 +82,8 @@ After winning:
 gcc main.c -o four_color -lSDL2
 ./four_color
 
+
+
 ## 🙏 Acknowledgements
 
 The project uses an existing CLion + SDL2 boilerplate for build system and IDE configuration.
