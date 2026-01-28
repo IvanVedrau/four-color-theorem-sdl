@@ -1,6 +1,6 @@
 ## 📸 Screenshots
 
-![Gameplay screenshot](Assets/images/Screenshot 2026-01-28 170038.png)
+![Gameplay screenshot](Assets/images/Screenshot.png)
 
 
 # 🗺️ Four Color Theorem — SDL C Project
